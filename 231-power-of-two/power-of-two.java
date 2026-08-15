@@ -7,6 +7,7 @@ class Solution {
             }
             n = n >> 1;
         }
+        // core logic is 2^x will always have single set bit
         return numberOfOne == 1;
     }
 }

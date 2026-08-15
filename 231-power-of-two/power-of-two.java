@@ -11,6 +11,6 @@ class Solution {
         // return numberOfOne == 1;
 
         // Efficient
-        return n > 0 && (n & (--n)) == 0;
+        return n > 0 && (n & (n-1)) == 0;
     }
 }

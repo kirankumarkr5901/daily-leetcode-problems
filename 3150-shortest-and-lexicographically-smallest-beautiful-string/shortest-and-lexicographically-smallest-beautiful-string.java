@@ -30,8 +30,7 @@ class Solution {
                     }
                 }
                 if(count1 == k) {
-                    System.out.print("ans: "+ans+" temp: "+temp);
-                    if(ans.equals("") || compareStrings(temp, ans)) {
+                    if(ans.equals("") || temp.compareTo(ans) < 0) {
                         ans = temp;
                     }
                     System.out.println(" -> "+ans);

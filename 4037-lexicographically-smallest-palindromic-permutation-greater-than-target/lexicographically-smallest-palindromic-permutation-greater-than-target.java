@@ -6,16 +6,15 @@ class Solution {
     private boolean palindromePerm(StringBuilder curr, String target, int index, int[] count, boolean greater) {
         int n = target.length() / 2;
         if(index == n) {
-            StringBuilder left = new StringBuilder(curr);
-            StringBuilder right = new StringBuilder(left).reverse();
+            StringBuilder palidrome = new StringBuilder(curr);
+            StringBuilder right = new StringBuilder(palidrome).reverse();
 
-            StringBuilder temp = new StringBuilder(left);
             if (!singleChar.isEmpty()) {
-                temp.append(singleChar);
+                palidrome.append(singleChar);
             }
-            temp.append(right);
-            if(temp.toString().compareTo(target) > 0) {
-                answer = temp.toString();
+            palidrome.append(right);
+            if(palidrome.toString().compareTo(target) > 0) {
+                answer = palidrome.toString();
                 return true;
             }
             return false;

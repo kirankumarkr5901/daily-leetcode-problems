@@ -39,7 +39,7 @@ class LFUCache {
 
         node.next = null;
         node.prev = null;
-        if (key == this.leastf && isFreqEmpty(key)) {
+        if (isFreqEmpty(this.leastf)) {
             this.leastf++;
         }
     }

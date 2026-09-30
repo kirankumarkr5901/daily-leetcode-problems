@@ -8,17 +8,9 @@ class Solution {
             char c = seq.charAt(i);
             if(c == '(') {
                 bal++;
-                if((bal & 1) == 1) {
-                    ans[i] = 0;
-                } else {
-                    ans[i] = 1;
-                }
+                ans[i] = bal % 2;
             } else {
-                if((bal & 1) == 1) {
-                    ans[i] = 0;
-                } else {
-                    ans[i] = 1;
-                }
+                ans[i] = bal % 2;
                 bal--;
             }
         }

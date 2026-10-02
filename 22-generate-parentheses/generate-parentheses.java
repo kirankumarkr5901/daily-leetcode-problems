@@ -16,7 +16,6 @@ class Solution {
             generate(sb, n, open, close+1);
             sb.deleteCharAt(sb.length()-1);
         }
-        return;
     }
 
     public List<String> generateParenthesis(int n) {

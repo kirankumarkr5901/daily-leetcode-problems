@@ -1,49 +1,39 @@
 class Solution {
-    int i = 0;
-    int n = 0;
-    private int getNumber(String s) {
-        int number = 0;
-        while(i < n && s.charAt(i) == ' ') i++;
-        while(i < n && s.charAt(i) - '0' >= 0 && s.charAt(i) - '0' <= 9) {
-            number *= 10;
-            number += s.charAt(i) - '0';
-            i++;
-        }
-        return number;
-    }
     public int calculate(String s) {
         Stack<Integer> stack = new Stack();
-        
-        i = 0;
-        n = s.length();
-        int sign = 1;
-        while(i < n) {
-            if(s.charAt(i) - '0' >= 0 && s.charAt(i)-'0' <= 9) {
-                stack.push(getNumber(s)*sign);
-            }
-            while(i < n && s.charAt(i) == ' ') i++;
-            if(i == n) break;
+        s += "+";
+        int n = s.length();
+        int number = 0;
+        char op = '+';
+        for(int i = 0;i<n;i++) {
             char c = s.charAt(i);
-            if(c == '+') {
-                sign = 1;
-                i++;
-            } else if(c == '-') {
-                sign = -1;
-                i++;
-            } else if(c == '*') {
-                ++i;
-                int result = stack.pop() * getNumber(s);
-                stack.push(result);
-            } else if(c == '/') {
-                ++i;
-                int result = stack.pop() / getNumber(s);
-                stack.push(result);
+            if(Character.isDigit(c)) {
+                number *= 10;
+                number += (c - '0');
+            }
+            else if(c != ' ') {
+                if(op == '+') {
+                    stack.push(number);
+                    number = 0;
+                }
+                else if(op == '-') {
+                    stack.push(-number);
+                    number = 0;
+                }
+                else if(op == '*') {
+                    stack.push(stack.pop() * number);
+                    number = 0;
+                }
+                else if(op == '/') {
+                    stack.push(stack.pop() / number);
+                    number = 0;
+                }
+                op = c;
             }
         }
         int answer = 0;
-        while(!stack.isEmpty()) {
+        while(!stack.isEmpty()) 
             answer += stack.pop();
-        }
         return answer;
     }
 }

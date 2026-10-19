@@ -1,19 +1,20 @@
 class Solution {
     public List<Integer> targetIndices(int[] nums, int target) {
-        int small = 0;
-        int targetCount = 0;
-        for(int num: nums) {
-            if(num == target)
-                targetCount++;
-            else if(num < target)
-                small++;
+        int start = 0, end = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] < target){
+                start++;
+            }
+            else if(nums[i] == target){
+                end++;
+            }
         }
-        int index = small;
-        List<Integer> ans = new ArrayList();
-        while(index < (small + targetCount)){
-            ans.add(index);
-            index++;
+        List<Integer> op = new ArrayList<>();
+        end = end+start-1;
+        for(int i =start; i <= end; i++){
+            op.add(i);
         }
-        return ans;
+
+        return op;
     }
 }
